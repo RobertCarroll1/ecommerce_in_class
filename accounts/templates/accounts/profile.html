@@ -1,0 +1,12 @@
+{% extends 'home/base.html' %}
+{% load bootstrap_tags %}
+{% load static from staticfiles %}
+{% block content %}
+
+<h3>Profile</h3>
+<p>Welcome to the Ecommerce Site, {{user}}!</p>
+
+<p>{{user.email}}</p>
+<br>
+
+{% endblock content %}

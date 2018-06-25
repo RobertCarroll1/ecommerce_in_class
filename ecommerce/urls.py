@@ -16,7 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls.static import static
+from home.views import get_index
+from django.conf.urls import url, include
+from home.views import get_index
+from django.views.generic import RedirectView
+from django.views.static import serve
+from django.conf import settings
+from accounts import urls as accounts_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', get_index),
+    path('accounts/', include(accounts_urls)),
 ]
