@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ecommerce-haleyschafer.c9users.io', 'hschafer-ecommerce.herokuapp.com']
+ALLOWED_HOSTS = ['ecommerce-haleyschafer.c9users.io', 'hschaferecommerce.herokuapp.com']
 
 
 # Application definition
