@@ -1,0 +1,1 @@
+gunicorn ecommerce.wsgi:application
