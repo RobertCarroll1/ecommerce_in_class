@@ -9,11 +9,13 @@
         <img src="{{ MEDIA_URL }}{{ product.image }}" width="200" height="500">
             {{product.name}}
             
-        <form action="{% url 'add_to_cart' product.id %}">
-            <input type="submit" value="Add to Cart"/>
+        <form action="{% url 'add_to_cart' %}" method= "POST">
+        {% csrf_token %}
+            <input type="hidden" name="product_id" value="{{ product.id }}"/>
+                <input type="submit" value="Add to Cart"/>
         </form>
         </div>
     {% endfor %}
-    
+
     </div>
 {% endblock content %}

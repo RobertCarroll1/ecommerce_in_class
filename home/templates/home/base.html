@@ -30,8 +30,11 @@
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Logout</a></li>
                     <li><a href="{% url 'profile' %}"><i class="fa fa-user"></i> Welcome, {{user}}</a></li>
-                    <li><a href="{% url 'cart' %}"><i class=""></i> {{user}} 's Cart</a></li>
+                    <li><a href="{% url 'cart' %}"><i class="fa fa-cart"></i> {{user}} 's Cart</a></li>
+                    <li><a href="{% url 'get_products' %}"><i class="fa fa-products"></i>Shop</a></li>
                     {% else %}
+                    
+                    
                     <li><a href="{% url 'register' %}"><i class="fa fa-user-plus"></i> Register</a></li>
                     <li><a href="{% url 'login' %}"><i class="fa fa-sign-in"></i> Login</a></li>
                     {% endif %}
