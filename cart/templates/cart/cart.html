@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "home/base.html" %}
 
 {% block content %}
 <h1>Cart</h1>
@@ -15,13 +15,13 @@
         </tr>
     </thead>
     <tbody>
-        {% for item in cart_items %}
+        {% for item in cart %}
         <tr>
             <td><img width="150" height="75" src="{{MEDIA_URL}}{{item.product.image}}"/></td>    
             <td>{{ item.product.name }}</td>    
             <td>{{ item.quantity}}</td>    
             <td>€ {{ item.product.price }}</td>
-            <td>€ {{ item.sub_total}}</td>
+            <td>€ {{ item.total}}</td>
             <td><form method="post" action="remove_from_cart">
                 {% csrf_token %}
                 <input type="submit" class="btn btn-success" value="Remove"/>
@@ -36,11 +36,12 @@
             <td></td>
             <td></td>
             <td><strong>Total:</strong></td>
-            <td><strong>€ {{total}}</strong></td>
+            <td><strong>€ {{cart_total}}</strong></td>
             <td></td>
         </tr>
     </tbody>
 </table>
-<a href="#" class="btn btn-success" role="button">Checkout</a>
 
+
+<a href="{% url 'checkout' %}" class="btn btn-success" role="button">Checkout</a>
 {% endblock content %}

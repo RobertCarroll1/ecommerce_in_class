@@ -1,0 +1,67 @@
+{% extends 'home/base.html' %}
+{% load static from staticfiles %}
+{% load bootstrap_tags %}
+{% block content %}
+<h2>Checkout</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>    
+            <th>Product</th>    
+            <th>Quantity</th>    
+            <th>Price</th>
+            <th>Total</th> 
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in cart_items %}
+        <tr>
+            <td><img width="150" height="75" src="{{MEDIA_URL}}{{item.image}}"/></td>    
+            <td>{{ item.name }}</td>    
+            <td>{{ item.quantity}}</td>    
+            <td>€ {{ item.price }}</td>
+            <td>€ {{ item.total}}</td>
+            <td><form method="post" action="remove_from_cart">
+                {% csrf_token %}
+                <input type="submit" class="btn btn-success" value="Remove"/>
+                <input type="hidden" name="product_id" value="{{ item.id }}"/>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><strong>Total:</strong></td>
+            <td><strong>€ {{total}}</strong></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+    <form role="form" method="post" id="payment-form" action="{% url 'checkout' %}">
+        
+    <legend>Payment Details</legend>
+
+    <div id="credit-card-errors" style="display:none">
+      <div class="alert-message block-message error" id="stripe-error-message"></div>
+    </div>
+
+    <div class="form-group col-md-6">
+        {{ order_form|as_bootstrap }}
+    </div>
+
+    <div class="form-group col-md-6">
+        {{ payment_form|as_bootstrap }}
+    </div>
+
+    {% csrf_token %}
+    <div class="form-group col-md-12">
+      <input class="btn btn-primary" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
+    </div>
+
+    </form>
+{% endblock content %}

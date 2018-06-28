@@ -20,7 +20,7 @@ def do_login(request):
     else:
         login_form = UserLoginForm()
 
-    return render(request, 'accounts/login.html', {'form': login_form})
+    return render(request, 'accounts/login.html', {'user_form': login_form})
     
 def register(request):
     if request.method=="POST":
