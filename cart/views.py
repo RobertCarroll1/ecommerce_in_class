@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, HttpResponse, redirect 
 from products.models import Product
+from .utils import get_cart_items_and_total
 
 # Create your views here.
 def get_cart(request):
@@ -29,7 +30,7 @@ def add_to_cart(request):
     
 def remove_from_cart(request):
     id = request.POST.get("product_id")
-    phone = get_object_or_404(Product, pk=id)
+    product = get_object_or_404(Product, pk=id)
 
     cart = request.session.get('cart', {})
     del cart[id]

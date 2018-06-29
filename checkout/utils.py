@@ -6,8 +6,7 @@ from django.conf import settings
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
 
-# stripe.api_key = settings.STRIPE_SECRET
-stripe.api_key = 1
+stripe.api_key = settings.STRIPE_SECRET
 
 def save_order_items(order, cart):
     for id, quantity in cart.items():
